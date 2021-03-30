@@ -11,7 +11,7 @@ let twitter = {
 
 let stack_overflow = {
     host : ["stackoverflow.com"],
-    css : ["show-votes"]
+    css : ["show-votes", "js-consent-banner"]
 }
 
 let quora = {
