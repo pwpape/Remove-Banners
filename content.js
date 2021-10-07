@@ -54,10 +54,30 @@ let observer = new window.MutationObserver(function(mutations, observer) {
     }
 });
 
-observer.observe(document, {
-    subtree: true,
-    childList: true
-})
+window.addEventListener('load', function() {
+    for (let i = 0; i < url_list.length; i++) {
+        for (let h = 0; h < url_list[i].host.length; h++) {
+            if (window.location.host == url_list[i].host[h]) {
+                for (let j = 0; j < url_list[i].css.length; j++) {
+                    if (url_list[i] == butler_hoops) {
+                        hide_butler(url_list[i].css[j])
+                    } else if (url_list[i] == RPGbot) {
+                        hide_RPGbot(url_list[i].css[j])
+                    } else {
+                        hide_side(url_list[i].css[j]);
+                    }
+                }
+            }
+        }
+    }
+});
+
+window.addEventListener('load', function() {
+    observer.observe(document, {
+        subtree: true,
+        childList: true
+    })
+}, true);
 
 function hide_side (css_class) {
     let elements = document.getElementsByClassName(css_class);
