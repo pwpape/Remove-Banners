@@ -10,7 +10,7 @@ let twitter = {
 }
 
 let stack_overflow = {
-    host : ["stackoverflow.com"],
+    host : ["stackoverflow.com", "stackexchange.com"],
     css : ["show-votes", "js-consent-banner"]
 }
 
@@ -39,7 +39,7 @@ let url_list = [reddit, twitter, stack_overflow, quora, roll20, butler_hoops, RP
 let observer = new window.MutationObserver(function(mutations, observer) {
     for (let i = 0; i < url_list.length; i++) {
         for (let h = 0; h < url_list[i].host.length; h++) {
-            if (window.location.host == url_list[i].host[h]) {
+            if (window.location.host.includes(url_list[i].host[h])) {
                 for (let j = 0; j < url_list[i].css.length; j++) {
                     if (url_list[i] == butler_hoops) {
                         hide_butler(url_list[i].css[j])
@@ -57,7 +57,7 @@ let observer = new window.MutationObserver(function(mutations, observer) {
 window.addEventListener('load', function() {
     for (let i = 0; i < url_list.length; i++) {
         for (let h = 0; h < url_list[i].host.length; h++) {
-            if (window.location.host == url_list[i].host[h]) {
+            if (window.location.host.includes(url_list[i].host[h])) {
                 for (let j = 0; j < url_list[i].css.length; j++) {
                     if (url_list[i] == butler_hoops) {
                         hide_butler(url_list[i].css[j])
