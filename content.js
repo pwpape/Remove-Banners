@@ -10,7 +10,7 @@ let twitter = {
 }
 
 let stack_overflow = {
-    host : ["stackoverflow.com", "stackexchange.com", "serverfault.com"],
+    host : ["stackoverflow.com", "stackexchange.com", "serverfault.com", "superuser.com"],
     css : ["show-votes", "js-consent-banner"]
 }
 
