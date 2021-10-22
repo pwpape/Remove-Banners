@@ -36,48 +36,33 @@ let RPGbot = {
 
 let url_list = [reddit, twitter, stack_overflow, quora, roll20, butler_hoops, RPGbot];
 
-let observer = new window.MutationObserver(function(mutations, observer) {
-    for (let i = 0; i < url_list.length; i++) {
-        for (let h = 0; h < url_list[i].host.length; h++) {
-            if (window.location.host.includes(url_list[i].host[h])) {
-                for (let j = 0; j < url_list[i].css.length; j++) {
-                    if (url_list[i] === butler_hoops) {
-                        hide_butler(url_list[i].css[j])
-                    } else if (url_list[i] === RPGbot) {
-                        hide_RPGbot(url_list[i].css[j])
-                    } else {
-                        hide_side(url_list[i].css[j]);
-                    }
-                }
-            }
-        }
-    }
-});
+let observer = new window.MutationObserver(iterateOverURLs);
 
-window.addEventListener('load', function() {
-    for (let i = 0; i < url_list.length; i++) {
-        for (let h = 0; h < url_list[i].host.length; h++) {
-            if (window.location.host.includes(url_list[i].host[h])) {
-                for (let j = 0; j < url_list[i].css.length; j++) {
-                    if (url_list[i] === butler_hoops) {
-                        hide_butler(url_list[i].css[j])
-                    } else if (url_list[i] === RPGbot) {
-                        hide_RPGbot(url_list[i].css[j])
-                    } else {
-                        hide_side(url_list[i].css[j]);
-                    }
-                }
-            }
-        }
-    }
-});
+window.addEventListener('load', iterateOverURLs);
 
-window.addEventListener('load', function() {
+window.addEventListener('load', () =>
     observer.observe(document, {
         subtree: true,
         childList: true
-    })
-}, true);
+    }), true);
+
+function iterateOverURLs () {
+    for (let i = 0; i < url_list.length; i++) {
+        for (let h = 0; h < url_list[i].host.length; h++) {
+            if (window.location.host.includes(url_list[i].host[h])) {
+                for (let j = 0; j < url_list[i].css.length; j++) {
+                    if (url_list[i] === butler_hoops) {
+                        hide_butler(url_list[i].css[j])
+                    } else if (url_list[i] === RPGbot) {
+                        hide_RPGbot(url_list[i].css[j])
+                    } else {
+                        hide_side(url_list[i].css[j]);
+                    }
+                }
+            }
+        }
+    }
+}
 
 function hide_side (css_class) {
     let elements = document.getElementsByClassName(css_class);
