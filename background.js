@@ -3,6 +3,8 @@ chrome.tabs.executeScript(tabs[0].id, { file: "content.js" });
 
 // https://medium.datadriveninvestor.com/how-to-bypass-any-paywall-for-free-df87832cbff7
 
+// I don't think the below work.  I'm keeping them in here for reference, but could probably comment them out
+
 chrome.webRequest.onBeforeSendHeaders.addListener(changeCookies, {
         urls: ["<all_urls>"],
         types: ["main_frame"], },
