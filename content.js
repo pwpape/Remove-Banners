@@ -1,7 +1,7 @@
 
 let reddit = {
     host : ["www.reddit.com"],
-    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9"]
+    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9", "XPromoBlockingModal"]
 }
 
 let twitter = {
