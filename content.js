@@ -57,6 +57,9 @@ function iterateOverURLs () {
                         hide_RPGbot(url_list[i].css[j])
                     } else {
                         hide_side(url_list[i].css[j]);
+
+                    }
+                    if (url_list[i] === reddit) {
                         removeBlur(url_list[i].css[j])
                     }
                 }
