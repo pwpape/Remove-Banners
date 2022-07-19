@@ -39,7 +39,7 @@ let RPGbot = {
     css : ["custom-ad-placeholder"]
 }
 
-let url_list = [reddit, twitter, stack_overflow, quora, roll20, butler_hoops, RPGbot];
+let url_list = [reddit, redditBlur, twitter, stack_overflow, quora, roll20, butler_hoops, RPGbot];
 
 let observer = new window.MutationObserver(iterateOverURLs);
 
@@ -60,11 +60,11 @@ function iterateOverURLs () {
                         hide_butler(url_list[i].css[j])
                     } else if (url_list[i] === RPGbot) {
                         hide_RPGbot(url_list[i].css[j])
+                    } else if (url_list[i] === redditBlur) {
+                        console.log('foo')
+                        removeBlur(url_list[i].css[j])
                     } else {
                         hide_side(url_list[i].css[j]);
-                    }
-                    if (url_list[i] === redditBlur) {
-                        removeBlur(url_list[i].css[j])
                     }
                 }
             }
@@ -74,6 +74,7 @@ function iterateOverURLs () {
 
 function removeBlur(css_class) {
     let elements = document.getElementsByClassName(css_class);
+    console.log(elements)
 
     for (let el = 0; el < elements.length; el++) {
         elements[el].style.filter = "none";
