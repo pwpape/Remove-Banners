@@ -1,7 +1,12 @@
 
 let reddit = {
     host : ["www.reddit.com"],
-    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9", "XPromoBlockingModal", "sidebar-grid"]
+    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9", "XPromoBlockingModal"]
+}
+
+let redditBlur = {
+    host : ["www.reddit.com"],
+    css : ["sidebar-grid"]
 }
 
 let twitter = {
@@ -57,9 +62,8 @@ function iterateOverURLs () {
                         hide_RPGbot(url_list[i].css[j])
                     } else {
                         hide_side(url_list[i].css[j]);
-
                     }
-                    if (url_list[i] === reddit) {
+                    if (url_list[i] === redditBlur) {
                         removeBlur(url_list[i].css[j])
                     }
                 }
