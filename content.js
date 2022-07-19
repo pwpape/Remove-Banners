@@ -57,10 +57,19 @@ function iterateOverURLs () {
                         hide_RPGbot(url_list[i].css[j])
                     } else {
                         hide_side(url_list[i].css[j]);
+                        removeBlur(url_list[i].css[j])
                     }
                 }
             }
         }
+    }
+}
+
+function removeBlur(css_class) {
+    let elements = document.getElementsByClassName(css_class);
+
+    for (let el = 0; el < elements.length; el++) {
+        elements[el].style.filter = "none";
     }
 }
 
