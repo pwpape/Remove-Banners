@@ -1,7 +1,7 @@
 
 let reddit = {
     host : ["www.reddit.com"],
-    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9", "XPromoBlockingModal"]
+    css : ["_2Xq-4oyrEvHjL5U_EeMnK8 _20b4i5iUhjZQqDZ1BM_Q-9", "XPromoBlockingModal", "bottom_bar_xpromo"]
 }
 
 let redditBlur = {
@@ -61,10 +61,10 @@ function iterateOverURLs () {
                     } else if (url_list[i] === RPGbot) {
                         hide_RPGbot(url_list[i].css[j])
                     } else if (url_list[i] === redditBlur) {
-                        console.log('foo')
                         removeBlur(url_list[i].css[j])
                     } else {
                         hide_side(url_list[i].css[j]);
+                        hide_by_attribute();
                     }
                 }
             }
@@ -74,10 +74,17 @@ function iterateOverURLs () {
 
 function removeBlur(css_class) {
     let elements = document.getElementsByClassName(css_class);
-    console.log(elements)
 
     for (let el = 0; el < elements.length; el++) {
         elements[el].style.filter = "none";
+    }
+}
+
+function hide_by_attribute () {
+    let elements = document.querySelectorAll("[bundlename='bottom_bar_xpromo']");
+
+    for (let el = 0; el < elements.length; el++) {
+        elements[el].style.display = "none";
     }
 }
 
