@@ -104,26 +104,34 @@ function hide_RPGbot (css_class) {
     }
 }
 
+function show_butler (css_class) {
+
+}
+
 function hide_butler (css_class) {
     let elements = document.getElementsByClassName(css_class);
-    if (css_class === "breadBoxTop") {
-        /* eliminating header container */
+    if (css_class === "discussionList" || css_class === "section" || css_class === "sectionMain") {
+        elements[0].style.display = "flex";
+    }
+
+    /*if (css_class === "breadBoxTop") {
+        /!* eliminating header container *!/
         elements[0].parentElement.children[0].style.display = "none";
     } else if (css_class === "breadBoxBottom") {
-        /* eliminating footer and sidebar containers */
+        /!* eliminating footer and sidebar containers *!/
         elements[0].parentElement.children[3].style.display = "none";
         elements[0].parentElement.children[1].children[0].style.display = "none";
         if (elements[0].parentElement.children[7]) {
             elements[0].parentElement.children[7].style.display = "none";
 
-            /* eliminating mid-page containers */
+            /!* eliminating mid-page containers *!/
             for (let child = 0; child < elements[0].parentElement.children[4].children[0].children[1].children.length; child++) {
                 if (elements[0].parentElement.children[4].children[0].children[1].children[child].tagName === "DIV") {
                     elements[0].parentElement.children[4].children[0].children[1].children[child].style.display = "none";
                 }
             }
 
-            /* eliminating comment containers */
+            /!* eliminating comment containers *!/
             for (let child = 0; child < elements[0].parentElement.children[4].children[0].children[0].children.length; child++) {
                 
                 if (elements[0].parentElement.children[4].children[0].children[0].children[child].style[0] === "text-align") {
@@ -131,7 +139,7 @@ function hide_butler (css_class) {
                 }
             }
 
-            /* eliminating comment footer containers */
+            /!* eliminating comment footer containers *!/
             for (let child = 0; child < elements[0].parentElement.children.length; child++) {
                 if (elements[0].parentElement.children[child].style[0] === "text-align") {
                     elements[0].parentElement.children[child].style.display = "none";
@@ -139,5 +147,5 @@ function hide_butler (css_class) {
                 
             }
         }
-    }
+    }*/
 }
