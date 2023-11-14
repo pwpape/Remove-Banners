@@ -29,17 +29,12 @@ let roll20 = {
     css : ["squareImageContainer"]
 }
 
-let butler_hoops = {
-    host : ["butlerhoops.com"],
-    css : ["breadBoxTop", "breadBoxBottom", "sidebar", "discussionList"]
-}
-
 let RPGbot = {
     host : ["rpgbot.net"],
     css : ["custom-ad-placeholder"]
 }
 
-let url_list = [reddit, redditBlur, twitter, stack_overflow, quora, roll20, butler_hoops, RPGbot];
+let url_list = [reddit, redditBlur, twitter, stack_overflow, quora, roll20, RPGbot];
 
 let observer = new window.MutationObserver(iterateOverURLs);
 
@@ -56,9 +51,7 @@ function iterateOverURLs () {
         for (let h = 0; h < url_list[i].host.length; h++) {
             if (window.location.host.includes(url_list[i].host[h])) {
                 for (let j = 0; j < url_list[i].css.length; j++) {
-                    if (url_list[i] === butler_hoops) {
-                        hide_butler(url_list[i].css[j])
-                    } else if (url_list[i] === RPGbot) {
+                    if (url_list[i] === RPGbot) {
                         hide_RPGbot(url_list[i].css[j])
                     } else if (url_list[i] === redditBlur) {
                         removeBlur(url_list[i].css[j])
@@ -102,50 +95,4 @@ function hide_RPGbot (css_class) {
     for (let el = 0; el < elements.length; el++) {
         elements[el].style.display = "none";
     }
-}
-
-function show_butler (css_class) {
-
-}
-
-function hide_butler (css_class) {
-    let elements = document.getElementsByClassName(css_class);
-    if (css_class === "discussionList" || css_class === "section" || css_class === "sectionMain") {
-        elements[0].style.display = "flex";
-    }
-
-    /*if (css_class === "breadBoxTop") {
-        /!* eliminating header container *!/
-        elements[0].parentElement.children[0].style.display = "none";
-    } else if (css_class === "breadBoxBottom") {
-        /!* eliminating footer and sidebar containers *!/
-        elements[0].parentElement.children[3].style.display = "none";
-        elements[0].parentElement.children[1].children[0].style.display = "none";
-        if (elements[0].parentElement.children[7]) {
-            elements[0].parentElement.children[7].style.display = "none";
-
-            /!* eliminating mid-page containers *!/
-            for (let child = 0; child < elements[0].parentElement.children[4].children[0].children[1].children.length; child++) {
-                if (elements[0].parentElement.children[4].children[0].children[1].children[child].tagName === "DIV") {
-                    elements[0].parentElement.children[4].children[0].children[1].children[child].style.display = "none";
-                }
-            }
-
-            /!* eliminating comment containers *!/
-            for (let child = 0; child < elements[0].parentElement.children[4].children[0].children[0].children.length; child++) {
-                
-                if (elements[0].parentElement.children[4].children[0].children[0].children[child].style[0] === "text-align") {
-                    elements[0].parentElement.children[4].children[0].children[0].children[child].style.display = "none";
-                }
-            }
-
-            /!* eliminating comment footer containers *!/
-            for (let child = 0; child < elements[0].parentElement.children.length; child++) {
-                if (elements[0].parentElement.children[child].style[0] === "text-align") {
-                    elements[0].parentElement.children[child].style.display = "none";
-                }
-                
-            }
-        }
-    }*/
 }
